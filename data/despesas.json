@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1744748561120",
+    "descricao": "academia",
+    "valor": 75,
+    "pago": false,
+    "data": "2025-04-15"
+  },
+  {
+    "id": "1744748947736",
+    "descricao": "cartão nubank",
+    "valor": 531.3,
+    "pago": true,
+    "data": "2025-04-15"
+  },
+  {
+    "id": "1744748998820",
+    "descricao": "cartão bb",
+    "valor": 172.62,
+    "pago": true,
+    "data": "2025-04-15"
+  },
+  {
+    "id": "1744751467321",
+    "descricao": "unopar",
+    "valor": 150,
+    "pago": true,
+    "data": "2025-04-15"
+  }
+]
