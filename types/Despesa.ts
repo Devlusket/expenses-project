@@ -3,6 +3,6 @@ export interface Despesa {
     descricao: string;
     valor: number;
     pago: boolean;
-    data?: string;
+    data: string;
   }
   
