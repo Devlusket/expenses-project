@@ -385,7 +385,9 @@ export default function Home() {
             <span className={`text-base sm:text-lg ${despesa.pago 
               ? (modoEscuro ? 'line-through text-gray-500' : 'line-through text-gray-400') 
               : (modoEscuro ? 'text-gray-100' : 'text-gray-800')}`}>
-              {despesa.descricao} - R$ {despesa.valor.toFixed(2)} - {despesa.data}
+              {/* {despesa.descricao} - R$ {despesa.valor.toFixed(2)} - {despesa.data} */}
+              {despesa.descricao} - R$ {despesa.valor.toFixed(2)} - {new Date(despesa.data).toLocaleDateString('pt-BR')}
+
             </span>
           </li>
         ))}
