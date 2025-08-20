@@ -214,7 +214,7 @@ type DespesaParaAtualizar = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === 'GET') {
-      const despesas = await prisma.despesa.findMany({
+      const despesas = await prisma.despesas.findMany({
         orderBy: { data: 'desc' }
       });
       return res.status(200).json(despesas);
@@ -231,7 +231,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json({ error: 'Dados inválidos' });
       }
 
-      const despesa = await prisma.despesa.create({
+      const despesa = await prisma.despesas.create({
         data: { descricao, valor, pago, data: new Date(data) }
       });
 
@@ -246,7 +246,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       await Promise.all(
         despesasAtualizadas.map(d =>
-          prisma.despesa.update({
+          prisma.despesas.update({
             where: { id: d.id },
             data: { pago: d.pago }
           })
@@ -262,7 +262,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json({ error: 'Formato inválido' });
       }
 
-      await prisma.despesa.deleteMany({
+      await prisma.despesas.deleteMany({
         where: { id: { in: idsParaDeletar } }
       });
 

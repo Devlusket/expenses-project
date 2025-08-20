@@ -1,12 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -14,10 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Despesa {
-  id        String   @id @default(uuid())
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model despesas {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   descricao String
-  valor     Float
-  pago      Boolean
-  data      DateTime
+  valor     Decimal  @db.Decimal
+  pago      Boolean  @default(false)
+  data      DateTime @db.Date
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model metas {
+  id      Int     @id @default(autoincrement())
+  value   String  @unique
+  checked Boolean @default(false)
 }
