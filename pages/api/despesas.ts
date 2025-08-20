@@ -199,7 +199,7 @@
 
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prisma'; // use o caminho correto
+import prisma from '@/lib/prisma'; // use o caminho correto hello
 
 
 function validarData(data: string): boolean {
