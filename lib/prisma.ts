@@ -1,20 +1,18 @@
 // lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
+const globalForPrisma = globalThis as typeof globalThis & {
+  prisma?: PrismaClient;
+};
 
-declare global {
-  // adiciona a propriedade prisma ao globalThis
-  var prisma: PrismaClient | undefined;
-}
+const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
-let prisma: PrismaClient;
-
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient();
-} else {
-  globalThis.prisma ??= new PrismaClient();
-  prisma = globalThis.prisma;
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma;
 }
 
 export default prisma;
+
+
+
 
