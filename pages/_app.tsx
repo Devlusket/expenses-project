@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
     <Head>
-      <title>App de Metas</title>
+      <title>App de Despesas</title>
     </Head>
     <Component {...pageProps} />
     </>
